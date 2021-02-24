@@ -4,17 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookInformation extends AppCompatActivity {
     ListView listView_bookInfo;
-    ArrayList<BookDataModel> bookDataModels;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +18,7 @@ public class BookInformation extends AppCompatActivity {
 
         //field for  list view
         listView_bookInfo = findViewById(R.id.list_view_bookInfo);
-
+        //take the input value of  searchInput  field
         Intent intent = getIntent();
         String receivedData = intent.getStringExtra("search_input");
 
@@ -43,9 +38,10 @@ public class BookInformation extends AppCompatActivity {
                 listView_bookInfo.setAdapter(customAdapter);
 
                 Toast.makeText(BookInformation.this, "Success!", Toast.LENGTH_SHORT).show();
-                //  ArrayAdapter arrayAdapter = new ArrayAdapter(BookInformation.this, android.R.layout.simple_dropdown_item_1line, bookDataModel);
             }
         });
+
+        //click event ot the list view with books Element
 
 //        listView_bookInfo.setOnClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

@@ -2,18 +2,16 @@ package book.api.library;
 
 public class BookDataModel {
 
-
     private String volumeInfo;
     private String title;
     private String publishedDate;
 
+//    public BookDataModel(String kind, String id, String selfLink, String volumeInfo) {
+//        this.volumeInfo = volumeInfo;
+//    }
 
-    public BookDataModel(String kind, String id, String selfLink, String volumeInfo) {
-        this.volumeInfo = volumeInfo;
-    }
-
-    public BookDataModel() {
-    }
+//    public BookDataModel() {
+//    }
 
     public BookDataModel(String title, String publishedDate) {
         this.title = title;
