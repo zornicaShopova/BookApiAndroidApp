@@ -12,15 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookApiLibrary"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BookInformation"></activity>
-        <activity android:name=".VolumeInfoActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".RegisterConfirmActivity" />
+        <activity android:name=".RegisterActivity" />
+<!--        Home-->
+        <activity android:name=".HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--       end-->
+        <activity android:name=".ResultBookActivity" />
+        <activity android:name=".VolumeInfoActivity" />
+<!--        Main -->
+        <activity android:name=".main.MainActivity">
+
+        </activity>
+<!--        end-->
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

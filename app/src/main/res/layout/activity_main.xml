@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,19 +38,27 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/searchButton"
+            android:id="@+id/showBooksButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Show items"
+            android:text="Show Books"
             app:cornerRadius="32dp" />
 
         <Button
-            android:id="@+id/showItemsButton"
+            android:id="@+id/totalBooksButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Show total"
+            app:cornerRadius="32dp" />
+
+        <Button
+            android:id="@+id/favButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Favourite"
             app:cornerRadius="32dp" />
     </LinearLayout>
 

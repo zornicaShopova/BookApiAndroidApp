@@ -26,7 +26,6 @@ public class BookDataService {
         this.context = context;
     }
 
-
     public interface VolleyResponseListener {
         void onError(String message);
 
@@ -73,34 +72,45 @@ public class BookDataService {
     }
 
     public void getVolumeInfo(String searchInput, VolumeInfoResponseListener volumeInfoResponseListener) {
+        //make a list where to store the data
         List<BookDataModel> volumeInfoList = new ArrayList<>();
-
+        //url from which we fetch the json data
         String url = QUERY_FOR_BOOKS_ITEMS + searchInput;
-        //get the json object
+        //make a json object
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // elements from  volumeInfo
+                // variables for saving the attrs values
                 String title = "";
                 String publishedDate = "";
                 try {
+                    // get the response like JSONArray
                     JSONArray booksItems = response.getJSONArray("items");
 
+                    // iterate through the array to take his attribute
+                    // we need just attr - volumeInfo
                     for (int i = 0; i < booksItems.length(); i++) {
 
-                        //get the first item --> kind
-                        BookDataModel first_item = new BookDataModel(title, publishedDate);
+                        // make object to store  the attr you get from the volumeInfo
+                        BookDataModel attrFromVolumeInfo = new BookDataModel(title,publishedDate);
+                        // save "items" in jsonObject
                         JSONObject items = (JSONObject) booksItems.get(i);
-                        //make volumeInfo into object from which we  take the strings data
+                        // make volumeInfo into object from which we get his attrs
                         JSONObject volumesElement = items.getJSONObject("volumeInfo");
-                        //take the title  string
+                        // store the values of attrs in variables
                         title = volumesElement.getString("title");
                         publishedDate = volumesElement.getString("publishedDate");
 
-                        first_item.setVolumeInfo(title);
-                        first_item.setVolumeInfo(publishedDate);
+//                        // save the json data in the database
+//                        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+//                        // take the "items" and save the whole information in the db
+//                        databaseHelper.saveDataToDB(booksItems);
+
+                        attrFromVolumeInfo.setVolumeInfo(title);
+                        attrFromVolumeInfo.setVolumeInfo(publishedDate);
+
                         //add the elements from the volumes in the list
-                        volumeInfoList.add(first_item);
+                        volumeInfoList.add(attrFromVolumeInfo);
 
                     }
 
