@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".main.MainActivity">
 
@@ -34,44 +35,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:weightSum="100">
 
         <Button
             android:id="@+id/showBooksButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:text="Show Books"
             app:cornerRadius="32dp" />
 
         <Button
             android:id="@+id/totalBooksButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:text="Show total"
             app:cornerRadius="32dp" />
 
         <Button
             android:id="@+id/favButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:text="Favourite"
             app:cornerRadius="32dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/lv_items"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

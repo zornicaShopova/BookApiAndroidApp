@@ -1,11 +1,14 @@
 package book.api.library;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +22,8 @@ import java.util.List;
 public class CustomAdapter extends ArrayAdapter<BookDataModel> {
     private final Context context;
     private final List<BookDataModel> bookDataModel;
-   // private final List<BookDataModel> allBooks;
+    ArrayList<Integer> selectedBooks = new ArrayList<Integer>();
+    // private final List<BookDataModel> allBooks;
 
     //constructor
     public CustomAdapter(Context context, List<BookDataModel> bookDataModel) {
@@ -40,32 +44,30 @@ public class CustomAdapter extends ArrayAdapter<BookDataModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //make inflater
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //who display the row view in the parent  layout
+        //who display the row view in the parent layout
         View rowView = inflater.inflate(R.layout.row_element, parent, false);
 
-        //take from  row_element  layout the field  and
+        //take row_element
         TextView bookTitleTV = rowView.findViewById(R.id.book_name);
         TextView publishedDateTV = rowView.findViewById(R.id.book_date);
-
-
-        //assign them them values
+        TextView authorTV = rowView.findViewById(R.id.book_authors);
+        CheckBox addCheckBox = rowView.findViewById(R.id.checkBox);
+        //assign a value in them
         bookTitleTV.setText(bookDataModel.get(position).getTitle());
         publishedDateTV.setText(bookDataModel.get(position).getPublishedDate());
+        authorTV.setText(String.valueOf(bookDataModel.get(position).getAuthor()));
 
-//        bookTitleTV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CheckBox checkBox = (CheckBox) v;
-//                BookDataModel bookDataModel = (BookDataModel) checkBox.getTag();
-//                Toast.makeText(context,"Clickeed on  chekbox"+ checkBox.getTag(),Toast.LENGTH_LONG).show();
-//                //bookDataModel.setSelected(checkBox.isChecked());
-//
-//            }
-//        });
-
-//        BookDataModel bookDataModel  =  bookDataModel.get(position);
-//        bookTitleTV.setText(bookDataModel.getTitle());
-//        bookTitleTV.setChecked(bookDataModel.isSelected());
+        addCheckBox.setChecked(selectedBooks.contains(position));
+        //add book in selectedBook array
+        addCheckBox.setOnClickListener(v -> {
+            if (addCheckBox.isChecked()) {
+                selectedBooks.add(position);
+            } else {
+                if (selectedBooks.contains(position)) {
+                    selectedBooks.remove(selectedBooks.indexOf(position));
+                }
+            }
+        });
 
 
         //return the row

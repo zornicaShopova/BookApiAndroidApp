@@ -15,7 +15,7 @@ import book.api.library.VolumeInfoActivity;
 public class MainActivity extends AppCompatActivity {
     Button showBooksBtn, showTotalBooksBtn;
     EditText searchET;
-    ListView lv_items;
+
 
     //when the method is commented the back button
     //stop working and you can't go back
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         showBooksBtn = findViewById(R.id.showBooksButton);
         searchET = findViewById(R.id.searchEditText);
         showTotalBooksBtn = findViewById(R.id.totalBooksButton);
-        lv_items = findViewById(R.id.lv_items);
+
 
         //show the  total books  from the search
         showTotalBooksBtn.setOnClickListener(v -> {

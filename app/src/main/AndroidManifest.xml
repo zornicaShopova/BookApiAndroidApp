@@ -17,18 +17,18 @@
         <activity android:name=".RegisterActivity" />
 <!--        Home-->
         <activity android:name=".HomeActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 <!--       end-->
         <activity android:name=".ResultBookActivity" />
         <activity android:name=".VolumeInfoActivity" />
 <!--        Main -->
         <activity android:name=".main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 <!--        end-->
         <meta-data

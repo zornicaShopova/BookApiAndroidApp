@@ -19,60 +19,31 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingHorizontal="5dp"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title :"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Authors:"
-                android:textSize="18sp"
-                android:layout_marginTop="5dp"/>
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Published date :"
-                android:textAlignment="textStart"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingHorizontal="5dp"
-            android:layout_marginTop="5dp">
+            android:paddingHorizontal="5dp">
 
             <TextView
                 android:id="@+id/book_name"
-                android:layout_width="wrap_content"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:maxLength="30"
                 android:text="book_name"
                 android:textAlignment="textStart"
-                android:textSize="18sp" />
+                android:textColor="#040404"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/book_authors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:fontFamily="serif"
                 android:text="book_authors"
+                android:textColor="#000000"
                 android:textSize="18sp" />
 
             <TextView
@@ -81,24 +52,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="serif"
                 android:text="book_date"
                 android:textAlignment="textStart"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center|clip_vertical"
+            android:layout_marginStart="100dp"
+            android:layout_weight="1"
+            android:text="Add" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_gravity="clip_vertical"
-        android:layout_weight="1"
-        android:text="check for saving"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

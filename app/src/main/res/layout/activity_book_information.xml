@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".ResultBookActivity">
+
+    <include layout="@layout/toolbar" />
 
     <ListView
         android:id="@+id/list_view_bookInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="59dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

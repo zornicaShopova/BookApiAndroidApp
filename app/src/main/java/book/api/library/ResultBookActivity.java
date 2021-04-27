@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class ResultBookActivity extends AppCompatActivity {
     //list view where the data is displayed
     ListView listView_bookInfo;
+    ImageView addBookButton;
 
     //List<BookDataModel> listBooks = new ArrayList<BookDataModel>();
     ArrayAdapter<BookDataModel> adapter;
@@ -23,6 +25,19 @@ public class ResultBookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_information);
+
+        //addBookToList button
+        addBookButton = findViewById(R.id.addBookButton);
+        addBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ResultBookActivity.this,"You clicked this",Toast.LENGTH_SHORT).show();
+                //if addBook is checked
+                //save data to db
+                //if not
+                //don't do anything
+            }
+        });
 
         //list view implementation
         listView_bookInfo = findViewById(R.id.list_view_bookInfo);
@@ -50,29 +65,10 @@ public class ResultBookActivity extends AppCompatActivity {
                 adapter = new CustomAdapter(ResultBookActivity.this, bookDataModels);
                 //show the adapter in the ListView
                 listView_bookInfo.setAdapter(adapter);
-                listView_bookInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        BookDataModel bookDataModel = (BookDataModel) parent.getItemAtPosition(position);
-                        Toast.makeText(getApplicationContext(),"clicked on row " + bookDataModel.getTitle(),Toast.LENGTH_LONG).show();
-                    }
-                });
 
-                //Toast.makeText(ResultBookActivity.this,"Success!",Toast.LENGTH_LONG).show();
 
             }
         });
-
-        //click event ot the list view with books Element
-
-        listView_bookInfo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Toast.makeText(ResultBookActivity.this, "Click" + adapter.getItem(position), Toast.LENGTH_LONG).show();
-            }
-        });
-
 
 
     }

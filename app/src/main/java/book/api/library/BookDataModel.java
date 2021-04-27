@@ -7,6 +7,7 @@ public class BookDataModel {
     private String volumeInfo;
     private String title;
     private String publishedDate;
+    private String author;
     private int bookID;
 
 
@@ -24,10 +25,11 @@ public class BookDataModel {
         this.title = publishedDate;
     }
 
-    //constructor  fo the adapter only
-    public BookDataModel(String title, String publishedDate) {
+    //constructor  for the adapter only
+    public BookDataModel(String title, String publishedDate, String author) {
         this.title = title;
         this.publishedDate = publishedDate;
+        this.author = author;
     }
 
 
@@ -56,7 +58,15 @@ public class BookDataModel {
         this.publishedDate = publishedDate;
     }
 
-//    @Override
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return
 //                "Title: " + title
