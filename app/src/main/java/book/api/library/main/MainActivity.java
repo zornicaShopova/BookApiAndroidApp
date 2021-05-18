@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import book.api.library.FavoriteBooksActivity;
 import book.api.library.R;
 import book.api.library.ResultBookActivity;
 import book.api.library.VolumeInfoActivity;
 
 public class MainActivity extends AppCompatActivity {
-    Button showBooksBtn, showTotalBooksBtn;
+    Button showBooksBtn, showTotalBooksBtn, favBooksBtn;
     EditText searchET;
+    //from toolbar
+    TextView titleToolbar;
+    ImageView menuProfile;
 
 
     //when the method is commented the back button
@@ -32,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         showBooksBtn = findViewById(R.id.showBooksButton);
         searchET = findViewById(R.id.searchEditText);
         showTotalBooksBtn = findViewById(R.id.totalBooksButton);
+        favBooksBtn = findViewById(R.id.favButton);
+        //change the name of toolbar
+        titleToolbar = findViewById(R.id.titleToolbar);
+        titleToolbar.setText("Search Books");
+        //change the icon
+        menuProfile = findViewById(R.id.addBookButton);
+        menuProfile.setImageResource(R.drawable.ic_baseline_person_24);
 
 
         //show the  total books  from the search
@@ -53,10 +65,17 @@ public class MainActivity extends AppCompatActivity {
             String searchInput = searchET.getText().toString();
             Intent intent = new Intent(MainActivity.this, ResultBookActivity.class);
 
-            intent.putExtra("search_input",searchInput);
+            intent.putExtra("search_input", searchInput);
             startActivity(intent);
 
             searchET.setText("");
+        });
+
+        //show favourite books
+        favBooksBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FavoriteBooksActivity.class);
+            startActivity(intent);
+
         });
     }
 }

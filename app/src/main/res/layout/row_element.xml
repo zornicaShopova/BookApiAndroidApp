@@ -67,7 +67,8 @@
             android:layout_gravity="center|clip_vertical"
             android:layout_marginStart="100dp"
             android:layout_weight="1"
-            android:text="Add" />
+            android:text="Add"
+            android:onClick="onCheckboxClicked"/>
 
     </LinearLayout>
 

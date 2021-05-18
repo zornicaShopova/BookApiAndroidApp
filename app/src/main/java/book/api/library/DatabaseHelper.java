@@ -16,6 +16,8 @@ import java.util.List;
 import book.api.library.BookDataModel;
 import book.api.library.User;
 
+import static android.content.ContentValues.TAG;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     //database
     public static final int DATABASE_VERSION = 1;
@@ -66,27 +68,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //save the data in jsonObject for table #1
-    public void saveDataToDB(JSONArray jsonObject) {
+    //save the data from checkboxes in table #1
+    public boolean saveDataToDB(String titleBook,String dataBook) {
         SQLiteDatabase db = null;
         ContentValues cv = null;
-
-        for (int i = 0; i < jsonObject.length(); i++) {
-            JSONObject volumeObjects;
+        long result = 0;
             try {
                 db = this.getWritableDatabase();
                 cv = new ContentValues();
-                //get the  JSONObject
-                volumeObjects = jsonObject.getJSONObject(i);
-                String titleBook = volumeObjects.getString("title");
-                String publishedDate = volumeObjects.getString("publishedDate");
-                cv.put(COLUMN_BOOK_TITLE, titleBook);
-                cv.put(COLUMN_BOOK_PUBLISHED_DATE, publishedDate);
-                //insert the record
-                db.insert(TABLE_NAME, null, cv);
-                Log.i("save","The data is saved");
 
-            } catch (SQLException | JSONException e) {
+                cv.put(COLUMN_BOOK_TITLE, titleBook);
+                cv.put(COLUMN_BOOK_PUBLISHED_DATE,dataBook);
+                //insert the record
+                result = db.insert(TABLE_NAME, null, cv);
+                Log.i(TAG,"addData: " + titleBook + " and "+ dataBook + " to " + TABLE_NAME);
+
+            } catch (SQLException e) {
                 Log.wtf("Error", e.getMessage());
             } finally {
                 if (db != null) {
@@ -96,7 +93,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     cv.clear();
                 }
             }
+
+        if(result == -1){
+            return false;
+        }else {
+            return true;
         }
+
     }
 
     //return the data in the list view for table #1
