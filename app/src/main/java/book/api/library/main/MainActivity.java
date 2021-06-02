@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import book.api.library.FavoriteBooksActivity;
+import book.api.library.ProfileActivity;
 import book.api.library.R;
 import book.api.library.ResultBookActivity;
 import book.api.library.VolumeInfoActivity;
@@ -44,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         //change the icon
         menuProfile = findViewById(R.id.addBookButton);
         menuProfile.setImageResource(R.drawable.ic_baseline_person_24);
+
+        menuProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         //show the  total books  from the search

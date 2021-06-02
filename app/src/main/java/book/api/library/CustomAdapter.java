@@ -26,9 +26,10 @@ import static android.content.ContentValues.TAG;
 public class CustomAdapter extends ArrayAdapter<BookDataModel> {
     private final Context context;
     private final List<BookDataModel> bookDataModel;
+
     ArrayList<Integer> selectedBooks = new ArrayList<Integer>();
     // private final List<BookDataModel> allBooks;
-    DatabaseHelper db;
+    DatabaseHelper db ;
 
     //constructor
     public CustomAdapter(Context context, List<BookDataModel> bookDataModel) {
@@ -64,7 +65,7 @@ public class CustomAdapter extends ArrayAdapter<BookDataModel> {
 
         addCheckBox.setChecked(selectedBooks.contains(position));
 
-        //check the boxes and save that status
+        //check the boxes and save that status that is checked
         addCheckBox.setOnClickListener((View v) -> {
             String book = "";
             String data = "";
@@ -85,9 +86,15 @@ public class CustomAdapter extends ArrayAdapter<BookDataModel> {
                 book = bookTitleTV.getText().toString();
                 data = publishedDateTV.getText().toString();
 
+
+
                 Toast.makeText(v.getContext(), "Title: " + book + " " + data, Toast.LENGTH_SHORT).show();
                 //save the field data to db
-               // db.saveDataToDB(book,data);
+                db = new DatabaseHelper(context);
+               Boolean cheakupdatedate =  db.saveDataToDB(book,data);
+               if(cheakupdatedate==true){
+                   Toast.makeText(v.getContext(),"The data is saved",Toast.LENGTH_LONG).show();
+               }
 
         }else{
             Toast.makeText(v.getContext(), "Not saved", Toast.LENGTH_SHORT).show();

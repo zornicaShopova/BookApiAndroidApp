@@ -160,6 +160,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public Cursor UserData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_NAME_REGISTER,null);
+        return c;
+    }
+
     public boolean login(String username, String password) {
         try {
             SQLiteDatabase  db = getReadableDatabase();
@@ -176,5 +182,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public boolean login_check(String username,String pass){
+        try{
+            SQLiteDatabase db = getReadableDatabase();
+            String sql = "SELECT * FROM " + TABLE_NAME_REGISTER
+                    + " WHERE " + COLUMN_USER_USERNAME + " = '" + username + "'"
+                    + " AND " + COLUMN_USER_PASSWORD + " = '" + pass + "'";
+
+            Cursor c = db.rawQuery(sql,null);
+
+                Log.d(TAG,"User exits");
+                return c.moveToFirst();
+
+        }catch (SQLException e){
+            Log.wtf("Error!",e.getMessage());
+        }
+        return false;
+    }
+    
 
 }
