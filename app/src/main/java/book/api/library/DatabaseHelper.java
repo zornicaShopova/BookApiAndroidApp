@@ -72,6 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean saveDataToDB(String titleBook,String dataBook) {
         SQLiteDatabase db = null;
         ContentValues cv = null;
+
         long result = 0;
             try {
                 db = this.getWritableDatabase();
@@ -81,9 +82,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cv.put(COLUMN_BOOK_PUBLISHED_DATE,dataBook);
                 //insert the record
                 result = db.insert(TABLE_NAME, null, cv);
+
+                // manually perform checkpoint
+                //the wall file flush the content to the .db
+                getReadableDatabase().rawQuery("PRAGMA wal_checkpoint ",null);
+
                 Log.i(TAG,"addData: " + titleBook + " and "+ dataBook + " to " + TABLE_NAME);
 
             } catch (SQLException e) {
+
                 Log.wtf("Error", e.getMessage());
             } finally {
                 if (db != null) {
@@ -101,6 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
 
     //return the data in the list view for table #1
     public List<BookDataModel> getAllBooks() {
