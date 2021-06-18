@@ -4,4 +4,4 @@ Android Studio Project
 - HTTP connection use volley library
 
 //What the app does 
--  take search input and display data with ArrrayAdapter
+-  we can search for books from google api library and save them in favorite list 
